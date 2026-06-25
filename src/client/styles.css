@@ -250,12 +250,14 @@ label {
   font-weight: 950;
 }
 
-.card span {
+.card-rank {
   font-size: 1.55rem;
 }
 
-.card strong {
-  font-size: 1.15rem;
+.card-suit {
+  font-size: clamp(0.62rem, 1.2vw, 0.9rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .card.hearts,
@@ -275,6 +277,15 @@ label {
 .card.small {
   width: 2.8rem;
   border-radius: 0.5rem;
+}
+
+.card.small .card-rank {
+  font-size: 1rem;
+}
+
+.card.small .card-suit {
+  font-size: 0.42rem;
+  letter-spacing: 0.02em;
 }
 
 .player-ring {

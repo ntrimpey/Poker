@@ -464,13 +464,17 @@ function CardView({ card, faceDown = false, small = false }: { card?: Card; face
     return <div className={`card back ${small ? "small" : ""}`}>POK</div>;
   }
 
-  const suitLetter = card.suit[0].toUpperCase();
+  const suitName = toTitleCase(card.suit);
   return (
-    <div className={`card ${card.suit} ${small ? "small" : ""}`}>
-      <span>{card.rank}</span>
-      <strong>{suitLetter}</strong>
+    <div className={`card ${card.suit} ${small ? "small" : ""}`} aria-label={`${card.rank} of ${suitName}`}>
+      <span className="card-rank">{card.rank}</span>
+      <strong className="card-suit">{suitName}</strong>
     </div>
   );
+}
+
+function toTitleCase(value: string): string {
+  return value.charAt(0).toUpperCase() + value.slice(1);
 }
 
 function ActionLog({ actions }: { actions: RoomSnapshot["actionLog"] }) {
